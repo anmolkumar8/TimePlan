@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimePlan - Your Personalised AI Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-calendar-check"></i>
+                <span>TimePlan</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#daily-planner">Daily Planner</a></li>
+                <li><a href="#goals">Goals</a></li>
+                <li><a href="#analytics">Analytics</a></li>
+                <li><a href="#tips">Tips</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="user-profile">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Intelligent Daily Planner</h1>
+            <p>Simply write your tasks, and let our AI create the perfect schedule for your day, week, or month. Maximize productivity with personalized recommendations.</p>
+            <button id="get-started-btn" class="cta-button">
+                <i class="fas fa-rocket"></i>
+                Start Planning Now
+            </button>
+        </div>
+        <div class="hero-visual">
+            <div class="time-circle">
+                <div class="time-display">
+                    <span id="current-time"></span>
+                    <small>Today</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Planner Section -->
+    <section id="daily-planner" class="daily-planner">
+        <div class="container">
+            <h2>Daily Task Planner</h2>
+            
+            <!-- Task Input Area -->
+            <div class="task-input-section">
+                <div class="input-card">
+                    <h3>What do you need to do today?</h3>
+                    <div class="task-input-container">
+                        <div class="task-input-group">
+                            <input type="text" id="task-input" placeholder="e.g., Finish project presentation, Go to gym, Study for exam..." maxlength="200">
+                            <div class="input-actions">
+                                <select id="task-priority" class="priority-select">
+                                    <option value="medium">Medium Priority</option>
+                                    <option value="high">High Priority</option>
+                                    <option value="low">Low Priority</option>
+                                </select>
+                                <input type="number" id="task-duration" placeholder="Duration (min)" min="5" max="480">
+                                <button id="add-task-btn" class="add-task-btn">
+                                    <i class="fas fa-plus"></i>
+                                    Add Task
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Add Templates -->
+                    <div class="quick-templates">
+                        <h4>Quick Templates:</h4>
+                        <div class="template-buttons">
+                            <button class="template-btn" data-tasks="Morning routine,Exercise,Breakfast">Morning Routine</button>
+                            <button class="template-btn" data-tasks="Check emails,Team meeting,Project work">Work Day</button>
+                            <button class="template-btn" data-tasks="Study session,Review notes,Practice problems">Study Plan</button>
+                            <button class="template-btn" data-tasks="Grocery shopping,Cleaning,Meal prep">Personal Tasks</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task List -->
+            <div class="tasks-list-section">
+                <div class="tasks-header">
+                    <h3>Today's Tasks</h3>
+                    <div class="list-actions">
+                        <button id="clear-tasks-btn" class="action-btn secondary">
+                            <i class="fas fa-trash"></i>
+                            Clear All
+                        </button>
+                        <button id="generate-schedule-btn" class="action-btn primary">
+                            <i class="fas fa-magic"></i>
+                            Generate Schedule
+                        </button>
+                    </div>
+                </div>
+                <div id="tasks-list" class="tasks-list">
+                    <div class="empty-state">
+                        <i class="fas fa-clipboard-list"></i>
+                        <p>No tasks added yet. Start by adding your first task above!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generated Schedule -->
+            <div id="schedule-section" class="schedule-section" style="display: none;">
+                <div class="schedule-header">
+                    <h3>Your Optimized Schedule</h3>
+                    <div class="schedule-actions">
+                        <select id="schedule-type" class="schedule-select">
+                            <option value="daily">Today's Schedule</option>
+                            <option value="weekly">This Week</option>
+                            <option value="monthly">This Month</option>
+                        </select>
+                        <button id="export-schedule-btn" class="action-btn secondary">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                    </div>
+                </div>
+                <div id="schedule-display" class="schedule-display">
+                    <!-- Generated schedule will appear here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section id="goals" class="goals-section">
+        <div class="container">
+            <h2>Long-term Goals</h2>
+            
+            <div class="goals-input-section">
+                <div class="goal-input-card">
+                    <h3>What do you want to achieve?</h3>
+                    <div class="goal-form">
+                        <input type="text" id="goal-title" placeholder="e.g., Learn Python programming, Run a marathon, Write a book">
+                        <div class="goal-details">
+                            <input type="date" id="goal-deadline" class="goal-date">
+                            <select id="goal-category" class="goal-category">
+                                <option value="learning">Learning</option>
+                                <option value="fitness">Fitness</option>
+                                <option value="career">Career</option>
+                                <option value="personal">Personal</option>
+                                <option value="creative">Creative</option>
+                                <option value="financial">Financial</option>
+                            </select>
+                            <button id="add-goal-btn" class="add-goal-btn">
+                                <i class="fas fa-target"></i>
+                                Add Goal
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="goals-list-section">
+                <div id="goals-list" class="goals-list">
+                    <div class="empty-goals-state">
+                        <i class="fas fa-bullseye"></i>
+                        <p>No goals set yet. Add your first goal to get a personalized plan!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Section -->
+    <section id="analytics" class="analytics-section">
+        <div class="container">
+            <h2>Your Productivity Analytics</h2>
+            
+            <div class="analytics-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="tasks-completed">0</h3>
+                        <p>Tasks Completed Today</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="productive-hours">0h</h3>
+                        <p>Productive Hours</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="streak-days">0</h3>
+                        <p>Day Streak</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="goals-achieved">0</h3>
+                        <p>Goals Achieved</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Charts -->
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h3>Weekly Progress</h3>
+                    <canvas id="weekly-progress-chart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Task Categories</h3>
+                    <canvas id="categories-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips & Recommendations Section -->
+    <section id="tips" class="tips-section">
+        <div class="container">
+            <h2>Personalized Tips & Recommendations</h2>
+            
+            <div class="tips-grid">
+                <div class="tip-card featured">
+                    <div class="tip-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>AI Insight</h3>
+                    <div id="ai-insight" class="tip-content">
+                        <p>Complete your task list to receive personalized insights based on your productivity patterns.</p>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Productivity Tip</h3>
+                    <div id="productivity-tip" class="tip-content">
+                        <p>Use the Pomodoro Technique: Work for 25 minutes, then take a 5-minute break. This can boost your focus by up to 40%.</p>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Wellness Reminder</h3>
+                    <div id="wellness-tip" class="tip-content">
+                        <p>Don't forget to stay hydrated! Drink a glass of water every hour to maintain optimal cognitive function.</p>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Motivation</h3>
+                    <div id="motivation-quote" class="tip-content">
+                        <p>"The key is not to prioritize what's on your schedule, but to schedule your priorities." - Stephen Covey</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Time Management Tips -->
+            <div class="time-tips-section">
+                <h3>Smart Time Management</h3>
+                <div class="time-tips-grid">
+                    <div class="time-tip">
+                        <div class="time-tip-number">1</div>
+                        <div class="time-tip-content">
+                            <h4>Time Blocking</h4>
+                            <p>Dedicate specific time blocks to different types of tasks. This reduces context switching and improves focus.</p>
+                        </div>
+                    </div>
+                    <div class="time-tip">
+                        <div class="time-tip-number">2</div>
+                        <div class="time-tip-content">
+                            <h4>Energy Optimization</h4>
+                            <p>Schedule demanding tasks during your peak energy hours, typically 2-3 hours after waking up.</p>
+                        </div>
+                    </div>
+                    <div class="time-tip">
+                        <div class="time-tip-number">3</div>
+                        <div class="time-tip-content">
+                            <h4>Buffer Time</h4>
+                            <p>Always add 25% buffer time to your estimates. Tasks often take longer than expected.</p>
+                        </div>
+                    </div>
+                    <div class="time-tip">
+                        <div class="time-tip-number">4</div>
+                        <div class="time-tip-content">
+                            <h4>Priority Matrix</h4>
+                            <p>Use the Eisenhower Matrix: Urgent+Important → Do first, Important → Schedule, Urgent → Delegate, Neither → Delete.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Planner Settings</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <h4>Work Hours</h4>
+                    <div class="time-inputs">
+                        <label>Start Time:</label>
+                        <input type="time" id="work-start" value="09:00">
+                        <label>End Time:</label>
+                        <input type="time" id="work-end" value="17:00">
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <h4>Break Preferences</h4>
+                    <label>
+                        <input type="checkbox" id="auto-breaks" checked>
+                        Automatically add breaks between tasks
+                    </label>
+                    <div class="break-duration">
+                        <label>Break Duration:</label>
+                        <select id="break-duration">
+                            <option value="5">5 minutes</option>
+                            <option value="10" selected>10 minutes</option>
+                            <option value="15">15 minutes</option>
+                            <option value="30">30 minutes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <h4>Notifications</h4>
+                    <label>
+                        <input type="checkbox" id="task-reminders" checked>
+                        Task reminders
+                    </label>
+                    <label>
+                        <input type="checkbox" id="goal-reminders" checked>
+                        Goal progress reminders
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="save-settings-btn" class="action-btn primary">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>TimePlan</span>
+                    </div>
+                    <p>Your intelligent companion for better time management and productivity.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li>AI-Powered Scheduling</li>
+                        <li>Goal Planning</li>
+                        <li>Progress Analytics</li>
+                        <li>Smart Recommendations</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li>Productivity Tips</li>
+                        <li>Time Management</li>
+                        <li>Goal Setting Guide</li>
+                        <li>Usage Analytics</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TimePlan. Designed for peak productivity.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
