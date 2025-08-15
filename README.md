@@ -469,7 +469,7 @@ Special recognition to:
 
 ## 📧 Contact & Support
 
-- **Developer**: Your Name
+- **Developer**: Anmol Kumar
 - **Email**: anmol.krhjp@gmail.com  
 - **GitHub**: [@anmolkumar8](https://github.com/anmolkumar8)
 - **LinkedIn**: [anmol-kumar4](https://linkedin.com/in/anmol-kummar4)
