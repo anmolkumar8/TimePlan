@@ -58,24 +58,6 @@ TimePlan is a revolutionary web application that takes the complexity out of tim
 
 Experience TimePlan in action: **[Try the Live Demo](https://your-username.github.io/TimePlan)**
 
-## 📸 Screenshots
-
-### Dashboard Overview
-![Dashboard](screenshots/dashboard.png)
-*Intelligent dashboard with real-time analytics and productivity insights*
-
-### AI Schedule Generation  
-![Schedule Generation](screenshots/schedule.png)
-*AI-powered schedule optimization with smart time blocking*
-
-### Goal Tracking
-![Goal Management](screenshots/goals.png)
-*Comprehensive goal tracking with milestone generation*
-
-### Analytics & Insights
-![Analytics](screenshots/analytics.png)
-*Detailed productivity analytics and personalized recommendations*
-
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
@@ -488,10 +470,10 @@ Special recognition to:
 ## 📧 Contact & Support
 
 - **Developer**: Your Name
-- **Email**: your.email@example.com  
-- **GitHub**: [@your-username](https://github.com/your-username)
-- **LinkedIn**: [Your Professional Profile](https://linkedin.com/in/your-profile)
-- **Project Repository**: [TimePlan on GitHub](https://github.com/your-username/TimePlan)
+- **Email**: anmol.krhjp@gmail.com  
+- **GitHub**: [@anmolkumar8](https://github.com/anmolkumar8)
+- **LinkedIn**: [anmol-kumar4](https://linkedin.com/in/anmol-kummar4)
+- **Project Repository**: [TimePlan on GitHub](https://github.com/anmolkumar8/TimePlan)
 
 ---
 
